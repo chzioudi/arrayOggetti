@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Area Tech</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        body{
+            overflow-x: hidden;
+        }
+        #title{
+            cursor: pointer;
+            transition: all .4s linear;
+            text-align: center;
+            background-color: antiquewhite;
+            padding: 20px 0;
+            color:coral;
+            text-transform: capitalize;
+            font-size: 35px;
+            margin-bottom: 30px;
+        }
+        .block{
+            width: 90%;
+            margin: auto;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            border: solid 1px #e1e1e1;
+            margin: 10px 0;
+        }
+        .block .container .block-container{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+            width: 300px;
+            height: 250px;
+            cursor: pointer;
+            border-bottom: 12px solid #000;
+        }
+        .block-container i{
+            font-size: 30px;
+            transition: all 0.3s ease;
+        }
+        .block-container h2{
+            padding: 20px 0;
+            text-transform: uppercase;
+        }
+        .block-container:hover i{
+            color: white !important ;
+            transform: scale(1.2);
+        }
+        #footer{
+            background-color: #020202;
+            color: white;
+            padding: 30px 20px;
+            font-weight: 500;
+        }
+        #footer span{
+            text-transform: uppercase;
+            color: coral;
+        }
+        @media screen and (max-width:768px) {
+            .block-container{
+                width: 250px;
+            }
+            #footer{
+                text-align: center;
+                padding: 30px 0; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">
+        Il mio Stack Tecnologico
+    </h1>
+    <div class="block"></div>
+    <footer id="footer"></footer>
+    <script>
+
+        //table dei miei dati
+
+     const table = [
+    {
+        title: 'Sviluppo Web',
+        icon: 'fas fa-laptop-code',
+        titelcolor: '#0642e7',
+        desc: 'Siti web moderni e applicazioni web scalabili realizzate con le ultime tecnologie.',
+        bg: '#8ea6e9'
+    },
+    {
+        title: 'Digital Marketing',
+        icon: 'fas fa-chart-line',
+        titelcolor: '#ef7474',
+        desc: 'Strategie SEO e campagne social per far crescere il tuo business online.',
+        bg: '#f0a4a4'
+    },
+    {
+        title: 'Cloud Systems',
+        icon: 'fas fa-server',
+        titelcolor: '#522121',
+        desc: 'Infrastrutture sicure e gestione database per la massima affidabilità dei dati.',
+        bg: '#7b6060;'
+    },
+    {
+        title: 'App Mobile',
+        icon: 'fas fa-mobile-alt',
+        titelcolor: '#0693b3',
+        desc: 'Esperienze mobile intuitive per iOS e Android con design user-friendly.',
+        bg: '#96e3f4'
+    },
+    {
+        title: 'Social Media',
+        icon: 'fas fa-bullhorn',
+        titelcolor: '#fb00b8',
+        desc: 'Gestione della presenza online e creazione di contenuti virali per i brand.',
+        bg: '#fab9e9'
+    },
+    {
+        title: 'AI & Data',
+        icon: 'fas fa-brain',
+        titelcolor: '#6e9b00',
+        desc: 'Integrazione di algoritmi avanzati per ottimizzare i flussi di lavoro aziendali.',
+        bg: '#e4fab9'
+    }
+];
+     let title=document.getElementById("title");
+     title.addEventListener("mouseover",()=>{
+        title.style.color="red";
+     })
+     title.addEventListener("mouseout",()=>{
+        title.style.color="black"
+     })
+    
+     //function create nuovo box
+
+      let crea=(a,e)=>{
+          a.insertAdjacentHTML('beforeend',` 
+            <div style="background-color:${e.bg}" class='block-container'>
+                <i class="${e.icon}" style="color:${e.titelcolor}"></i>
+                <h2 style="color:${e.titelcolor}">${e.title}</h2>
+                <p>${e.desc}</p>
+            </div>`)
+       };
+
+//forEach
+     let ele=document.querySelector(".block");
+       let div=document.createElement("div")
+       let h1=document.createElement('h1');
+           h1.textContent='ForEach';
+           h1.style.color="green"
+           ele.appendChild(h1)
+         div.classList.add("container")
+         ele.appendChild(div)
+         table.forEach(e => {crea(div,e) });
+     
+     //for..let..of
+
+   let h2=document.createElement('h1');
+   let div2=document.createElement("div");
+        div2.classList.add("container");
+        h2.style.color="blue"
+      h2.textContent='for..let..of';
+      ele.appendChild(h2) ;
+      ele.appendChild(div2)      
+     for(let e of table){
+        crea(div2,e);
+     }
+       
+     
+     //Map
+
+        let h3=document.createElement('h1');
+          h3.textContent='Map';
+          h3.style.color='red';
+           ele.appendChild(h3); 
+         
+           let div3=document.createElement("div");
+             div3.classList.add("container");
+           ele.appendChild(div3);
+    
+         table.map((e, i) => crea(div3,e)); 
+
+      let footer=document.getElementById("footer");
+
+      footer.innerHTML="&copy; Created By <span>Chafik Zioudi</span>"
+
+    
+    </script>
+</body>
+</html>
