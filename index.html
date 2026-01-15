@@ -9,13 +9,16 @@
    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="title">
-        Il mio Stack Tecnologico
-    </h1>
     <div class="block"></div>
     <footer id="footer"></footer>
     <script>
-
+     
+     //Creazione del titolo della mia pagina 
+     
+        let obj=document.createElement("h1");
+        obj.id='title';
+        obj.textContent="Il mio Stack Tecnologico"
+        document.body.prepend(obj);
         //table dei miei dati
 
      const table = [
